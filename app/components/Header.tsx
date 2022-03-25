@@ -16,8 +16,8 @@ type TopMenuProps = {
 export default function Header({ delayShowUp, forceDarkMode }: TopMenuProps) {
 	const { isGoingDown, isOnTop } = useScrollDown(delayShowUp)
 	return (
-		<div className={clsx("fixed z-[5000] flex flex-col w-full shadow-lg", isGoingDown ? "opacity-0" : "opacity-100", (forceDarkMode && isOnTop) ? "bg-transparent" : "bg-white")}>
-			<header id="header" className="flex items-center justify-end w-full p-2 mx-auto xs:px-10 2xl:mx-auto 2xl:max-w-screen-xl">
+		<div className={clsx("fixed z-[5000] flex flex-col w-full shadow-lg transition-all ease-in-out duration-500", isGoingDown ? "-mt-28" : "mt-0", (forceDarkMode && isOnTop) ? "bg-transparent" : "bg-white")}>
+			<header id="header" className="flex items-center justify-between w-full p-2 mx-auto xs:px-10 2xl:mx-auto 2xl:max-w-screen-xl">
 				<Link to="/">
 					<div className="flex flex-row items-center">
 						<Logo className="w-10 h-10" isAnimated />
@@ -34,7 +34,7 @@ export default function Header({ delayShowUp, forceDarkMode }: TopMenuProps) {
 					</div>
 				</Link>
 
-				<ul className={clsx("hidden p-2 ml-auto mr-4 font-medium rounded-box menu menu-horizontal text-md md:flex", (forceDarkMode && isOnTop) ? "text-white" : "")}>
+				<ul className={clsx("hidden p-2 ml-auto mr-4 font-medium rounded-box menu menu-horizontal text-md lg:flex", (forceDarkMode && isOnTop) ? "text-white" : "")}>
 					{headerMenus.map((headerMenu: MenuItemType) => (
 						<li key={headerMenu.slug} className={headerMenu.lessImportant ? "hidden py-2 xl:flex" : "py-2"}>
 							{headerMenu.external
@@ -52,18 +52,24 @@ export default function Header({ delayShowUp, forceDarkMode }: TopMenuProps) {
 					))}
 				</ul>
 
-				<div className="hidden space-x-4 md:flex">
-					<a rel="prefetch" href="https://store.bizchain.vn/login">
-						<button className={clsx("py-2 border-2 btn btn-md", (forceDarkMode && isOnTop) ? "bg-transparent text-white" : "text-black bg-white focus:text-white hover:text-white hover:bg-black")}>
-							Login
+				<div className="hidden space-x-4 lg:flex">
+					<a rel="prefetch" href="/">
+						<button className={clsx("py-2 border-2 btn btn-md uppercase", (forceDarkMode && isOnTop) ? "bg-transparent text-white" : "text-black bg-white focus:text-white hover:text-white hover:bg-black")}>
+							Đăng ký ngay
 						</button>
 					</a>
 				</div>
 
-				<div className="inline-block ml-0 space-x-4 md:hidden md:ml-auto dropdown dropdown-end">
+				<div className="inline-block ml-0 space-x-4 lg:hidden lg:ml-auto dropdown dropdown-end">
 
-					<button className="btn btn-square btn-ghost">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-4 h-4 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+					<button className={clsx(
+						"btn btn-square btn-ghost textShadow-dark",
+						{
+							"hover:bg-white/30 text-white": forceDarkMode && isOnTop,
+							"text-black": (!forceDarkMode) || (!isGoingDown && !isOnTop)
+						}
+					)}>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
 					</button>
 
 					<ul tabIndex={0} className="p-2 mt-3 shadow-xl border-[1px] border-gray-300 menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
@@ -84,8 +90,8 @@ export default function Header({ delayShowUp, forceDarkMode }: TopMenuProps) {
 						))}
 						<li className="-mx-2 bg-gray-300"></li>
 						<li className="">
-							<a rel="prefetch" href="https://store.bizchain.vn/login">
-								<img className="w-4 h-4" src="/img/login.svg" alt=""/> Login
+							<a rel="prefetch" href="/">
+								Đăng ký ngay
 							</a>
 						</li>
 					</ul>

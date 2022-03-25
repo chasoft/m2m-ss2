@@ -1,4 +1,5 @@
 import React from "react"
+import Footer from "~/components/Footer"
 import Header from "~/components/Header"
 import RulesDetails from "~/components/rules/RulesDetails"
 import RulesHighlights from "~/components/rules/RulesHighlights"
@@ -20,6 +21,7 @@ export default function RulesPage(){
 			<RulesSections />
 			<RulesRegGuide />
 			<RulesPayment />
+			<Footer />
 		</>
 	)
 }

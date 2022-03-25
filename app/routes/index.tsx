@@ -1,19 +1,23 @@
+import Footer from "~/components/Footer";
 import CountDownTimer from "~/components/frontpage/CountDownTimer";
 import Hero from "~/components/frontpage/Hero";
 import Sponsors from "~/components/frontpage/Sponsors";
 import Timeline from "~/components/frontpage/Timeline";
 import Values from "~/components/frontpage/Values";
+import Video from "~/components/frontpage/Video";
 import Header from "~/components/Header";
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <Header />
+    <>
+      <Header forceDarkMode/>
       <Hero />
+      <Video />
       <Timeline />
       <Values />
       <CountDownTimer />
       <Sponsors />
-    </div>
+      <Footer />
+    </>
   );
 }
