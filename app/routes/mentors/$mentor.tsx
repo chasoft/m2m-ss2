@@ -1,23 +1,10 @@
 import React from "react"
-import slugify from "react-slugify"
-import { json, LoaderFunction, redirect, useLoaderData } from "remix"
+import { json, LoaderFunction, useLoaderData } from "remix"
 import Footer from "~/components/Footer"
 import Header from "~/components/Header"
 import { MentorDetailsContent } from "~/components/mentors/Mentors"
-import { mentorsList } from "~/data/statics"
-import { MentorItemType, MentorProfileType } from "~/types"
 
 export const loader: LoaderFunction = async ({ params }) => {
-
-	// const allMentors = mentorsList.reduce(
-	// 	(all: MentorProfileType[], curr: MentorItemType) => ([...all, ...curr.items]), []
-	// )
-
-	// const selectedMentor = allMentors.find(mentor => slugify(mentor.name) === params.mentor)
-
-	// if (selectedMentor === undefined) return redirect("/mentors")
-
-	// return json({selectedMentor})
 	return json(params.mentor)
 }
 
