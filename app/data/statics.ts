@@ -12,10 +12,10 @@ export const headerMenus: MenuItemType[] = [
 ]
 
 export const frontpageTimeline = [
-	{title: "round1", img: "/img/timeline.png"},
-	{title: "round2", img: "/img/timeline.png"},
-	{title: "round3", img: "/img/timeline.png"},
-	{title: "round4", img: "/img/timeline.png"}
+	{title: "round1", img: "/img/timeline0.png"},
+	{title: "round2", img: "/img/timeline0.png"},
+	{title: "round3", img: "/img/timeline0.png"},
+	{title: "round4", img: "/img/timeline0.png"}
 ]
 
 export const socialLinks = [
